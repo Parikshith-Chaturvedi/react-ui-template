@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #000;
+}
+
+.nav-items > ul {
+  display: flex;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 5px;
+  list-style-type: none;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  max-width: 200px;
+  border: 1px solid #535353;
+  border-radius: 0.25rem;
+  min-height: 10rem;
+}
+
+.card-body {
+  padding: 1rem;
+}
