@@ -27,6 +27,23 @@
   min-height: 10rem;
 }
 
+.shimmer-card {
+  max-width: 200px;
+  /* border: 1px solid #535353; */
+  border-radius: 0.25rem;
+  min-height: 10rem;
+  background-color: #e7e7e7;
+}
+
 .card-body {
   padding: 1rem;
+}
+
+.filter {
+  padding: 0.45rem 1.5rem;
+  background: #fe9e1f;
+  border: 1px solid #fe9e1f;
+  margin: 1rem;
+  border-radius: 0.25rem;
+  color: #fff;
 }
