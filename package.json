@@ -22,10 +22,16 @@
   "author": "parikshith c",
   "license": "ISC",
   "devDependencies": {
+    "init": "^0.1.2",
+    "npx": "^10.2.2",
     "parcel": "^2.10.2",
-    "process": "^0.11.10"
+    "postcss": "^8.4.38",
+    "postcss-modules": "^4.3.1",
+    "process": "^0.11.10",
+    "tailwindcss": "^3.4.3"
   },
   "dependencies": {
+    "postcss-cli": "^11.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.1"

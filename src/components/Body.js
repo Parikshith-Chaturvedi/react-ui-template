@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import restaurantObject from "../utils/mockData";
 import RestaurantCardComponent from "./RestaurantCard";
 import ShimmerComponent from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restsurants, setRestaurants] = useState([]);
@@ -30,9 +30,10 @@ const Body = () => {
   return restsurants.length === 0 ? (
     <ShimmerComponent />
   ) : (
-    <div className="body">
-      <div className="">
+    <div className="container mx-auto p-0">
+      <div className="flex items-center justify-end">
         <input
+          className="m-4 py-2 px-3 border border-slate-400 rounded-md"
           type="text"
           placeholder="Search"
           value={searchText}
@@ -41,6 +42,7 @@ const Body = () => {
           }}
         />
         <button
+          className="bg-orange-500 text-white rounded-md py-2 px-3"
           onClick={() => {
             const filteredData = restsurants.filter((res) =>
               res.info.name.toLowerCase().includes(searchText.toLowerCase())
@@ -50,21 +52,28 @@ const Body = () => {
         >
           Search
         </button>
+        <button
+          className="border rounded-md py-2 px-3 m-4"
+          onClick={() => {
+            const filterList = restsurants.filter((res) => {
+              return res?.info?.avgRating > 4;
+            });
+            setRestaurants(filterList);
+          }}
+        >
+          Top Rated Restaurant
+        </button>
       </div>
-      <button
-        className="filter"
-        onClick={() => {
-          const filterList = restsurants.filter((res) => {
-            return res?.info?.avgRating > 4;
-          });
-          setRestaurants(filterList);
-        }}
-      >
-        Filter
-      </button>
-      <div className="card-container">
+      <div className="flex flex-wrap justify-center">
         {filteredRes.map((data, index) => (
-          <RestaurantCardComponent key={data.info.id} resData={data} />
+          <div
+            className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 p-4"
+            key={data.info.id}
+          >
+            <Link to={"/restaurants/" + data.info.id}>
+              <RestaurantCardComponent resData={data} />
+            </Link>
+          </div>
         ))}
       </div>
     </div>
