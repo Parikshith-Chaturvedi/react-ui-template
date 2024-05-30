@@ -6,9 +6,11 @@ import { MENU_API } from "../utils/constants";
 import CategoryList from "./CategoryList";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
+  const [resInfo, setResInfo] = useState(null),
+    [showIndex, setShowIndex] = useState(0);
 
   const { resId } = useParams();
+
   const fetchMenu = async () => {
     const data = await fetch(MENU_API + resId);
     const json = await data.json();
@@ -64,8 +66,13 @@ const RestaurantMenu = () => {
           <p className="text-gray-500 text-base">Delivery in: 30 mins</p>
         </div>
       </div>
-      {categories.map((item) => (
-        <CategoryList key={item?.card?.card?.title} data={item?.card?.card} />
+      {categories.map((item, index) => (
+        <CategoryList
+          key={item?.card?.card?.title}
+          data={item?.card?.card}
+          showItem={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
+        />
       ))}
     </div>
   );
