@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
   const [text, setText] = useState("Login");
+  const {loggedInUser} = useContext(UserContext)
+  console.log(loggedInUser)
 
   const handleClick = () => {
     text === "Login" ? setText("Logout") : setText("Login");
@@ -28,6 +31,9 @@ const Header = () => {
           <li className="px-4">Cart</li>
           <li className="px-4">
             <button onClick={handleClick}> {text}</button>
+          </li>
+          <li>
+            <p>{loggedInUser}</p>
           </li>
         </ul>
       </div>
